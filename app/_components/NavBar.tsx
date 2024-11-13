@@ -12,7 +12,7 @@ import { LoginWithGithub, LoginWithGoogleButton } from "./AuthButton";
 import { signIn } from "../lib/auth";
 
 const NavBar = () => (
-  <nav className="flex items-center justify-between px-4 py-2">
+  <nav className="flex items-center justify-between px-4 py-2 border-b border-borderPrimary">
     <div className="font-bold flex items-center gap-2">
       <AlignStartVertical className="h-6 w-6" />
       AlignMe

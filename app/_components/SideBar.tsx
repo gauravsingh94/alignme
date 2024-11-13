@@ -1,6 +1,7 @@
 "use client";
-import { CalendarCheck2, House, Settings, Users } from "lucide-react";
+import { CalendarCheck2, House, Settings, Users, LogOut } from "lucide-react";
 import { ReactNode, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 interface LinkItem {
   label: string;

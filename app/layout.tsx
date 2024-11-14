@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import SideBar from "./_components/SideBar";
 import "./globals.css";
 import NavBar from "./_components/NavBar";
+import { SessionProvider } from "next-auth/react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,7 +32,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="flex">
-          <SideBar />
+          <SessionProvider>
+            <SideBar />
+          </SessionProvider>
           <div className="flex flex-col w-full">
             <NavBar />
             <div className="p-4">{children}</div>

@@ -3,6 +3,7 @@ import { CalendarCheck2, House, Settings, Users, LogOut } from "lucide-react";
 import { ReactNode, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 interface LinkItem {
   label: string;
   value: string;
@@ -17,6 +18,7 @@ const Links: LinkItem[] = [
 ];
 
 const SideBar = () => {
+  const { data: session } = useSession();
   const [currentSelected, setCurrentSelected] = useState<string>("eventType");
   const handleOptionSelect = (value: string) => {
     setCurrentSelected(value);
@@ -33,12 +35,16 @@ const SideBar = () => {
           />
         ))}
       </div>
-      <div className="pb-4 mb-8">
-        <Button onClick={() => signOut()} variant="destructive">
-          <LogOut />
-          SignOut
-        </Button>
-      </div>
+      {session?.user ? (
+        <div className="pb-4 mb-8">
+          <Button onClick={() => signOut()} variant="destructive">
+            <LogOut />
+            SignOut
+          </Button>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

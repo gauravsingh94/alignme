@@ -2,7 +2,7 @@
 import { CalendarCheck2, House, Settings, Users, LogOut } from "lucide-react";
 import { ReactNode, useState } from "react";
 import { Button } from "@/components/ui/button";
-
+import { signOut } from "next-auth/react";
 interface LinkItem {
   label: string;
   value: string;
@@ -22,15 +22,22 @@ const SideBar = () => {
     setCurrentSelected(value);
   };
   return (
-    <div className="w-[30%] h-[100vh] border-r border-borderPrimary px-4">
+    <div className="w-[30%] h-[100vh] border-r border-borderPrimary px-4 flex flex-col justify-between items-center">
       <div className="mt-20">
         {Links.map((value, index) => (
           <SideBarOptions
+            key={index}
             link={value}
             selected={currentSelected}
             handleOptionSelect={handleOptionSelect}
           />
         ))}
+      </div>
+      <div className="pb-4 mb-8">
+        <Button onClick={() => signOut()} variant="destructive">
+          <LogOut />
+          SignOut
+        </Button>
       </div>
     </div>
   );

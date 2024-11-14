@@ -7,10 +7,10 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog"
-import { signIn } from "next-auth/react"
+import { signIn } from "../lib/auth"
 import { LoginWithGoogleButton, LoginWithGithub } from "./AuthButton"
 
-export function LoginDialog() {
+export function TryForFreeButton() {
   return (
     <Dialog>
       <DialogTrigger asChild>

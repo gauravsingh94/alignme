@@ -17,14 +17,14 @@ const Links: LinkItem[] = [
   { label: "Settings", value: "settings", icon: <Settings /> },
 ];
 
-const SideBar = () => {
+const SideBar = ({isLoggedIn}:{isLoggedIn:boolean}) => {
   const { data: session } = useSession();
   const [currentSelected, setCurrentSelected] = useState<string>("eventType");
   const handleOptionSelect = (value: string) => {
     setCurrentSelected(value);
   };
   return (
-    <div className="w-[30%] h-[100vh] border-r border-borderPrimary px-4 flex flex-col justify-between items-center">
+    <div className="w-full h-[100vh]  px-4 flex flex-col justify-between items-center">
       <div className="mt-20">
         {Links.map((value, index) => (
           <SideBarOptions
@@ -35,8 +35,8 @@ const SideBar = () => {
           />
         ))}
       </div>
-      {session?.user ? (
-        <div className="pb-4 mb-8">
+      {isLoggedIn ? (
+        <div className="pb-4 mb-16">
           <Button onClick={() => signOut()} variant="destructive">
             <LogOut />
             SignOut

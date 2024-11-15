@@ -31,10 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex">
-          <SessionProvider>
-            <SideBar />
-          </SessionProvider>
+        <div className="flex ">
           <div className="flex flex-col w-full">
             <NavBar />
             <div className="p-4">{children}</div>
